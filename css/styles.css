@@ -1,0 +1,56 @@
+/**************************************************************/
+/*********************FONDO DE PANTALLA************************/
+body 
+{
+	background: url(image) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+/**************************************************************/
+.titulo{
+	height: 140px;
+	background: #BF0202;
+	background-image: url(../images/pokemon.png);
+	background-size: 20%;
+	background-repeat: no-repeat;
+	background-position: center;
+	border: double;
+}
+.listaPokemon
+{
+	background-color: #E7EBF8;
+	border:double;
+	font-size:5px;
+	display:inline-block;
+	width: 200px;
+	text-align: center;
+	text-shadow:0 0.2em 0.2em red;
+	cursor: pointer;
+	-webkit-transition:-webkit-transform 0.5s ease-out;
+	-moz-transition:-moz-transform 0.5s ease-out;
+	-o-transition:-o-transform 0.5s ease-out;
+	-ms-transition:-ms-transform 0.5s ease-out;
+	transition:transform 0.5s ease-out;
+}
+.listaPokemon:hover{
+    background: silver;
+    opacity: 0.8em;
+    z-index: 1;
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1)
+}
+}
+.boton
+{
+	width: 175px;
+	background-color: silver;
+	margin-bottom: 10px;
+	color:black;
+	font-size: 20px;
+	border-color: black;
+}
