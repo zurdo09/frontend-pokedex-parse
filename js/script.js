@@ -12,7 +12,7 @@
     
     /*for para llamar todos los links de cada pokemon*/
 /**************************************************************/
-    for(x=1;x<=719;x++)
+    for(x=1;x<=50;x++)
         {
         /*llamar link que retorna json de pokemon*/
     

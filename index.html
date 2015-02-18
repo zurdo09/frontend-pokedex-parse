@@ -28,22 +28,102 @@
 	<!-- ******************************************************************************************************************
 	********************************************* Menú Principal de la Página *********************************************
 	***********************************************************************************************************************-->
-	<div style="background:rgb(211, 31, 31)" class="row">
-        <div class="col-md-1"></div>
-				<div class="col-md-10">
-					<div class="excentrico">
-						<ul id="nav">
-							<li class='text'>POKÉMON DATA</li>
-							<li class='text'>GAME MECHANICS</li>
-							<li class='text'>COMUNITY</li>
-							<li class='text'>OTHER INFORMATION</li>
-							<li class='text'>POKÉMON GAMES</li>
-						</ul>
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div clas="col-md-6 botonesFiltros">
+			<div ng-controller="pokeDex as pokemon">	
+			
+				<div class="navbar navbar-inverse" role="group" aria-label="...">
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=1">ALL POKEMON</button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=2">NAME</button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=3">NUMBER</button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=4">TYPE</button>
 				</div>
-			<div class="col-md-1"></div>
+	<!--********************************************************************************************-->
+	<!--***************************************FILTRO ALL POKEMON***********************************-->
+	
+		<div class="row" ng-show="tab===1">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
 		</div>
+	<!--********************************************************************************************-->	
+	<!--***************************************FILTRO NAME******************************************-->
+		<div class="row" ng-show="tab===2">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10" >
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'name' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+
+	<!--********************************************************************************************-->	
+	<!--****************************************FILTRO NUMBER***************************************-->	
+		<div class="row" ng-show="tab===3">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+
+	<!--********************************************************************************************-->
+	<!--******************************************FILTRO TYPE***************************************-->
+		<div class="row" ng-show="tab===4">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'types[0].name' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+
+	<!--********************************************************************************************-->							
+			</div>
+		</div>
+		<div class="col-md-3"></div>		
 	</div>
-	<br/>
+	
+
+
+
 
 		<!--************************************************Carrusel*********************************************************************-->
 	<div class="main">
@@ -59,22 +139,7 @@
 	<!-- ******************************************************************************************************************
 	***********************************************************************************************************************
 	***********************************************************************************************************************-->
-	<div class="row">
-        <div class="col-md-1"></div>
-        <div class="col-md-10">
-            <div ng-controller="pokeDex">
-                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
-                    <h1>N.°{{pokemon.national_id}}</h1>
-                    <img ng-src="{{pokemon.national_id|soloUrl}}">
-									<br>
-                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
-									<br>
-                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-1"></div>
-	</div>
+	
 					<!-- ******************************************************************************************************************
 	****************************************** Inicio de Barra de Redes Sociales ******************************************
 	***********************************************************************************************************************-->
