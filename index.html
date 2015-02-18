@@ -25,7 +25,7 @@
 	<div class="row principal">
 		<div class="col-md-12"></div>
 	</div>
-	<!-- ******************************************************************************************************************
+<!-- ******************************************************************************************************************
 	********************************************* Menú Principal de la Página *********************************************
 	***********************************************************************************************************************-->
 	<div class="row">
@@ -33,33 +33,40 @@
 		<div clas="col-md-6 botonesFiltros">
 			<div ng-controller="pokeDex as pokemon">	
 			
-				<div class="navbar navbar-inverse" role="group" aria-label="...">
-					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=1">ALL POKEMON</button>
-					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=2">NAME</button>
-					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=3">NUMBER</button>
-					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=4">TYPE</button>
+				<div class="navbar navbar-inverse centrar" role="group" aria-label="...">
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=5">
+					   HOME <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=1">
+					  POKEDEX <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=2">
+					  NAME <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=3">
+					  NUMBER <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=4">
+					  TYPE <span class="glyphicon glyphicon-tint" aria-hidden="true"></span></button>
+					  
 				</div>
-	<!--********************************************************************************************-->
-	<!--***************************************FILTRO ALL POKEMON***********************************-->
+<!--********************************************************************************************-->
+<!--***************************************FILTRO ALL POKEMON***********************************-->
 	
-		<div class="row" ng-show="tab===1">
+		<div class="row-fluid">
         <div class="col-md-1"></div>
         	<div class="col-md-10">
-           	 <div ng-controller="pokeDex">
-                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
-                    <h1>N.°{{pokemon.national_id}}</h1>
-                    <img ng-src="{{pokemon.national_id|soloUrl}}">
-									<br>
-                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
-									<br>
-                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
-                </div>
-            </div>
-       	 </div>
+	           	<div ng-controller="pokeDex" ng-show="tab===1">
+	                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+	                    <h1>N.°{{pokemon.national_id}}</h1>
+	                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+										<br>
+	                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+										<br>
+	                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+	                </div>
+	            </div>
+       		</div>
         <div class="col-md-1"></div>
 		</div>
-	<!--********************************************************************************************-->	
-	<!--***************************************FILTRO NAME******************************************-->
+<!--****************************************************************************************************************************-->	
+<!--**********************************************************FILTRO NAME*******************************************************-->
 		<div class="row" ng-show="tab===2">
         <div class="col-md-1"></div>
         	<div class="col-md-10" >
@@ -108,14 +115,20 @@
 									<br>
                     <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
 									<br>
-                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.types[0].name}}</button>
                 </div>
             </div>
        	 </div>
         <div class="col-md-1"></div>
 		</div>
+<!--********************************************************************************************-->
+<!--******************************************FILTRO HOMCE***************************************-->
 
-	<!--********************************************************************************************-->							
+		<div class="row" ng-show="tab===5">
+        <div class="col-md-12"></div>
+        	
+		</div>
+<!--********************************************************************************************-->
 			</div>
 		</div>
 		<div class="col-md-3"></div>		
@@ -125,7 +138,7 @@
 
 
 
-		<!--************************************************Carrusel*********************************************************************-->
+<!--************************************************Carrusel*********************************************************************-->
 	<div class="main">
 		<div class="slides">
 			<img src="http://www.piktureplanet.com/wp-content/uploads/2014/06/pokemon81.jpg">
@@ -136,7 +149,7 @@
 			<img src="http://www.iwallhd.com/stock/pokemon-deviantart-free-red-blue-arkeis.jpg">
 		</div>
 	</div>
-	<!-- ******************************************************************************************************************
+<!-- ******************************************************************************************************************
 	***********************************************************************************************************************
 	***********************************************************************************************************************-->
 	
