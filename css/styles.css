@@ -25,6 +25,17 @@ html{
 	text-align: center;
 }
 /******************************************************************************************************/
+/****************************************DISEÑO NOMBRE Y TIPO POKEMON**********************************/
+.nombrePokemon
+{
+	background-color: silver;
+	margin-bottom: 5px;
+	color:black;
+}
+
+
+/******************************************************************************************************/
+/******************************************************************************************************/
 
 
 .partes{
@@ -46,7 +57,8 @@ html{
 }
 
 .partes:hover{
-	background: url(../images/pokebola.png);
+	background: url(../images/pokebolagris.png);
+
 	z-index: 1;
 	-moz-transform: scale(1.1);
 	-webkit-transform: scale(1.1);
