@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="es">
+<html ng-app="pokedex">
 <head>
 	<!-- Codificación ñ o (´) -->
 	<meta charset="utf-8">
@@ -21,10 +21,13 @@
 	<!-- ******************************************************************************************************************
 	********************************************* Cuerpo Principal de la Página *******************************************
 	***********************************************************************************************************************-->
-<body data-ng-app="pokedex" style="background:url('http://assets9.pokemon.com/static2/_ui/img/chrome/body_bg.png')">
+<body style="background:url('http://assets9.pokemon.com/static2/_ui/img/chrome/body_bg.png')">
 	<div class="row principal">
 		<div class="col-md-12"></div>
 	</div>
+
+
+	
 <!-- ******************************************************************************************************************
 	********************************************* Menú Principal de la Página *********************************************
 	***********************************************************************************************************************-->
@@ -33,37 +36,68 @@
 		<div clas="col-md-6 botonesFiltros">
 			<div ng-controller="pokeDex as pokemon">
 <!--****************************************************************************************************************************-->	
- 					<div id="prueba">Este div cambia de color</div>
+ 				
 <!--****************************************************************************************************************************-->	
 				<div class="navbar navbar-inverse centrar" role="group" aria-label="...">
 					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=5">
-					   HOME <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+					   HOME <span class="glyphicon glyphicon-home colorIcono1" aria-hidden="true"></span></button>
+
 					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=1">
-					  POKEDEX <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></button>
+					  POKEDEX <span class="glyphicon glyphicon-leaf colorIcono2" aria-hidden="true"></span></button>
+
 					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=2">
-					  NAME <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+					  NAME <span class="glyphicon glyphicon-flash colorIcono3" aria-hidden="true"></span></button>
+
 					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=3">
-					  NUMBER <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></button>
+					  NUMBER <span class="glyphicon glyphicon-fire colorIcono4" aria-hidden="true"></span></button>
+
 					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=4">
-					  TYPE <span class="glyphicon glyphicon-tint" aria-hidden="true"></span></button>
+					  TYPE <span class="glyphicon glyphicon-tint colorIcono5" aria-hidden="true"></span></button>
 					  
 				</div>
 <!--********************************************************************************************-->
 <!--***************************************FILTRO ALL POKEMON***********************************-->
-	
+		<div  ng-show="tab===1">
 		<div class="row-fluid">
         <div class="col-md-1"></div>
         	<div class="col-md-10 centrar">
-	           	<div ng-controller="pokeDex" ng-show="tab===1">
-	                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+	           	<div ng-controller="pokeDex">
+	                
+<!--****************************************************************************************************************************-->	
+<!--**********************************************BARRA DE PROGRESO*************************************************************-->	
+<div class="progress progress-striped active">
+  <div class="progress-bar" role="progressbar"
+       aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"
+       style="width: 45%">
+    <span class="sr-only">45% completado</span>
+  </div>
+</div>
+<!--****************************************************************************************************************************-->	
+<!--************************************************BUSCADOR********************************************************************-->	
+	                <div class="col-md-12">
+	                	<div class="col-md-4"></div>
+	                	<div class="col-md-4">
+	                <div class="input-group cuadroBuscar">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar">
+					</div>
+					<br></div>
+	                	<div class="col-md-4"></div>
+	                </div>
+<!--****************************************************************************************************************************-->	
+					
+	                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' | filter:buscar">
+
 	                    <h1>N.°{{pokemon.national_id}}</h1>
 	                    <img ng-src="{{pokemon.national_id|soloUrl}}">
-										<br>
+						<br>
 	                   <div class="nombrePokemon">{{pokemon.name}}</div>
 						
 	                    <div class="col-md-12">
-	                    	<div class="col-md-6" id="poison" >{{pokemon.types[0].name}}</div>
+
+	                    	<div class="col-md-6" id={{pokemon.types[0].name}}.id>{{pokemon.types[0].name}}</div>
 	                    	<div class="col-md-6 tipo2" id="grass">{{pokemon.types[1].name}}</div>
+	                    
 	                    </div>
 	                   
 	                </div>
@@ -71,13 +105,18 @@
        		</div>
         <div class="col-md-1"></div>
 		</div>
+		</div>
 <!--****************************************************************************************************************************-->	
 <!--**********************************************************FILTRO NAME*******************************************************-->
 		<div class="row" ng-show="tab===2">
         <div class="col-md-1"></div>
         	<div class="col-md-10 centrar" >
            	 <div ng-controller="pokeDex">
-                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'name' ">
+           	 	<div class="input-group cuadroBuscar">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar">
+					</div>
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'name' | filter:buscar">
                     <h1>N.°{{pokemon.national_id}}</h1>
                     <img ng-src="{{pokemon.national_id|soloUrl}}">
 									<br>
@@ -96,7 +135,11 @@
         <div class="col-md-1"></div>
         	<div class="col-md-10 centrar">
            	 <div ng-controller="pokeDex">
-                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+           	 	<div class="input-group cuadroBuscar">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar">
+					</div>
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' | filter:buscar">
                     <h1>N.°{{pokemon.national_id}}</h1>
                     <img ng-src="{{pokemon.national_id|soloUrl}}">
 									<br>
@@ -115,7 +158,11 @@
         <div class="col-md-1"></div>
         	<div class="col-md-10 centrar">
            	 <div ng-controller="pokeDex">
-                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'types[0].name' ">
+           	 	<div class="input-group cuadroBuscar">
+						<span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
+						<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar">
+					</div>
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'types[0].name' | filter:buscar">
                     <h1>N.°{{pokemon.national_id}}</h1>
                     <img ng-src="{{pokemon.national_id|soloUrl}}">
 									<br>

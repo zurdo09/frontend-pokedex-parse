@@ -11,7 +11,7 @@
 
     /*for para llamar todos los links de cada pokemon*/
 /**************************************************************/
-    for(x=1;x<=50;x++)
+    for(x=1;x<=20;x++)
         {
         /*llamar link que retorna json de pokemon*/
     
@@ -19,9 +19,9 @@
             {
             $scope.pokeInfo=data;
             $scope.listapokemon.push($scope.pokeInfo);
+
             });
         };
-    alert($scope.listapokemon[0].name);
 /**************************************************************/
 /**************************************************************/
     });
