@@ -18,7 +18,7 @@
 	<title>POKEDEX</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
      <link rel="stylesheet" href="pace-0.5.1/templates/pace-theme-corner-indicator.tmpl.css">
-     
+
 </head>
 <!--****************************************************************************************************************************-->
 <!--**********************************************CUERPO PRINCIPAL DE LA PAGINA*************************************************-->
@@ -69,7 +69,7 @@
 							<div class="col-md-4">
 								<div class="input-group cuadroBuscar">
 									<span class="input-group-addon"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>
-									<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar">
+									<input type="text" class="form-control" placeholder="BUSCAR" data-ng-model="buscar.national_id">
 								</div>
 								<br>
 							</div>
@@ -214,13 +214,12 @@
 <!--******************************************FILTRO HOMCE************************************************************************-->
 
 		<div class="row" ng-show="tab===5">
-			<div class="col-md-12"></div>
-		</div>
-<!--******************************************************************************************************************************-->
+			<div class="col-md-12">
+				
 			</div>
 		</div>
-		<div class="col-md-3"></div>
-	</div>
+<!--******************************************************************************************************************************-->
+	
 <!--******************************************************************************************************************************-->
 <!--************************************************Carrusel*********************************************************************-->
 	<div class="main">
@@ -232,10 +231,11 @@
 			<img src="http://www.wallgogo.com/wp-content/uploads/2015/02/wallpapers-pokemon-backgrounds-hd-pokemon-hd-wallpaper.jpg">
 			
 		</div>
+	</div>
 					<!-- ******************************************************************************************************************
 	****************************************** Inicio de Barra de Redes Sociales ******************************************
 	***********************************************************************************************************************-->
-	 <div class="row">
+	 <!--div class="row">
 <div class="col-md-12 social">
 <ul>
 <li><a href="https://www.facebook.com/cognits?fref=ts" target="_blank" class="icon-facebook"></a></li>
@@ -245,7 +245,7 @@
 <li><a href="http://www.cognits.co/apply" target="_blank" class="icon-embed"></a></li>
 </ul>
 </div>
-</div>
+</div-->
     <!-- ******************************************************************************************************************
 	************************************* SCRIPTS BOOSTRAP, JQUERY, JAVASCRIPT, AJAX **************************************
 	***********************************************************************************************************************-->
