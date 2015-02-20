@@ -1,35 +1,137 @@
-<!DOCTYPE html>
-<!--
-Usa este archivo para tu proyecto. No olvides hacer
-la estructura correta y guardar TODO tu CSS en el archivo styles.css
- -->
-<html  ng-app="pokedex">
+<!DOCTYPE HTML>
+<html lang="es">
 <head>
-	<title>POKEDEX</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-	
-	<link rel="icon" href="https://gp6.googleusercontent.com/-F-nLfZHoW-g/AAAAAAAAAAI/AAAAAAAAAAA/-KkhMS2t7Tc/s48-c-k-no/photo.jpg">
+	<!-- Codificación ñ o (´) -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1 /> - See more at: http://www.phonegapspain.com/topic/ajustar-texto-segun-las-distintas-resoluciones-de-pantalla/#sthash.TrWdeP61.dpuf">
+	<!-- Icono de la Página -->
+	<link rel="icon" href="http://rocketdock.com/images/screenshots/Pokeball-1.png">
+	<!-- Llamado del Boostrap -->
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/fonts/">
+
+	<!-- LLamado del CSS -->
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="dist/fonts/style.css">
+	
+	<!--  Carrusel-->
 	<link rel="stylesheet" type="text/css" href="css/fonts.css">
-	<link href="css/boot/bootstrap-responsive.css" rel="stylesheet">
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
 
+	<!-- Nombre Principal de la Página -->
+	<title>POKEDEX</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 </head>
-<!--***************************************************************************************************************************-->
-<!--***************************************************************************************************************************-->
-<body>
-<!--***************************************************************************************************************************-->
-<!--**************************************************TITULO POKEDEX***********************************************************-->
-	<div class="row-fluid">
-		<div class="col-md-12 titulo"></div>
+<!-- ******************************************************************************************************************
+********************************************* Cuerpo Principal de la Página *******************************************
+***********************************************************************************************************************-->
+<body data-ng-app="pokedex" style="background:url('http://assets9.pokemon.com/static2/_ui/img/chrome/body_bg.png')">
+	<div class="row principal">
+		<div class="col-md-12"></div>
 	</div>
+<!-- ******************************************************************************************************************
+********************************************* Menú Principal de la Página *********************************************	***********************************************************************************************************************-->
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div clas="col-md-6 botonesFiltros">
+			<div ng-controller="pokeDex as pokemon">	
+			
+				<div class="navbar navbar-inverse centrar" role="group" aria-label="...">
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=5">
+					   HOME <span class="glyphicon glyphicon-home" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=1">
+					  POKEDEX <span class="glyphicon glyphicon-leaf" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=2">
+					  NAME <span class="glyphicon glyphicon-flash" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=3">
+					  NUMBER <span class="glyphicon glyphicon-fire" aria-hidden="true"></span></button>
+					  <button class="botonesFiltros" type="button" class="btn btn-default" ng-click="tab=4">
+					  TYPE <span class="glyphicon glyphicon-tint" aria-hidden="true"></span></button>	  
+				</div>
+<!--********************************************************************************************-->
+<!--***************************************FILTRO ALL POKEMON***********************************-->
+	
+		<div class="row-fluid">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+	           	<div ng-controller="pokeDex" ng-show="tab===1">
+	                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+	                    <h1>N.°{{pokemon.national_id}}</h1>
+	                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+										<br>
+	                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+										<br>
+	                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+	                </div>
+	            </div>
+       		</div>
+        <div class="col-md-1"></div>
+		</div>
+<!--****************************************************************************************************************************-->	
+<!--**********************************************************FILTRO NAME*******************************************************-->
+		<div class="row" ng-show="tab===2">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10" >
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'name' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+<!--********************************************************************************************-->	
+<!--****************************************FILTRO NUMBER***************************************-->	
+		<div class="row" ng-show="tab===3">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.egg_groups[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+<!--********************************************************************************************-->
+<!--******************************************FILTRO TYPE***************************************-->
+		<div class="row" ng-show="tab===4">
+        <div class="col-md-1"></div>
+        	<div class="col-md-10">
+           	 <div ng-controller="pokeDex">
+                <div class ="partes" ng-repeat="pokemon in listapokemon | orderBy: 'types[0].name' ">
+                    <h1>N.°{{pokemon.national_id}}</h1>
+                    <img ng-src="{{pokemon.national_id|soloUrl}}">
+									<br>
+                    <button type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.name}}</button>
+									<br>
+                    <button id="tipo" type="button" disabled="disabled" class="btn btn-default" data-ng-click="tab=1">{{pokemon.types[0].name}}</button>
+                </div>
+            </div>
+       	 </div>
+        <div class="col-md-1"></div>
+		</div>
+<!--********************************************************************************************-->
+<!--******************************************FILTRO HOMCE***************************************-->
 
-	<!--************************************************Carrusel*********************************************************************-->
+		<div class="row" ng-show="tab===5">
+        <div class="col-md-12"></div>
+        	
+		</div>
+<!--********************************************************************************************-->
+			</div>
+		</div>
+		<div class="col-md-3"></div>		
+	</div>
+<!--************************************************ Carrusel *********************************************************************-->
 	<div class="main">
 		<div class="slides">
 			<img src="http://www.piktureplanet.com/wp-content/uploads/2014/06/pokemon81.jpg">
@@ -41,32 +143,48 @@ la estructura correta y guardar TODO tu CSS en el archivo styles.css
 		</div>
 	</div>
 
-<!--*********************************************RESULTADOS TODOS LOS DATOS****************************************************-->
-	<div class="row-fluid">
-		<div class="col-md-1"></div>
-		<div class="col-md-10">
-			<br><br>
-			<div ng-controller="pokeDex">
-				<div class="listaPokemon" ng-repeat="pokemon in listapokemon | orderBy: 'national_id' ">
-					
-					<h2>#{{pokemon.national_id}}</h2>
-					<img ng-src="{{pokemon.national_id|soloUrl}}" ng-click="open">
-					
-					<button  type="button" class="btn btn-default boton" data-ng-click="tab=1">{{pokemon.name}}</button>
-					
-				</div>
-			</div>
-		</div>
-		<div class="col-md-1"></div>
+<!-- ******************************************************************************************************************	****************************************** Inicio de Barra de Redes Sociales ******************************************	***********************************************************************************************************************-->
+	<div class="social">
+		<ul>
+			<li><a href="https://www.facebook.com/cognits?fref=ts" target="_blank" class="icon-facebook"></a></li>
+			<li><a href="https://www.linkedin.com/company/cognits" target="_blank" class="icon-linkedin"></a></li>
+			<li><a href="https://plus.google.com/108479858316238835078/posts" target="_blank" class="icon-google-plus"></a></li>
+			<li><a href="https://github.com/cognits" target="_blank" class="icon-github3"></a></li>
+			<li><a href="http://www.cognits.co/apply" target="_blank" class="icon-embed"></a></li>
+		</ul>
 	</div>
-	<br><br>
-<!--***************************************************************************************************************************-->
-<!--***************************************************************************************************************************-->
-<!--***************************************************************************************************************************-->
-	<script src="js/script.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="js2/jquery.slides.js"></script>
-	<script src="js2/script.js"></script>
+<!--************************************************** FOOTER OF PAGE **************************************************-->
+	<div class="container">
+		<div class="row-fluid">
+			<div class="col-md-12">
+				<footer>Made in Cognits</footer>
+			</div>	
+		</div>
+	</div>
+<!-- ******************************************************************************************************************
+************************************* SCRIPTS BOOSTRAP, JQUERY, JAVASCRIPT, AJAX **************************************
+***********************************************************************************************************************-->
+    <!--CALLING LIBRARY OF THE ANGULARJS-->
+    <script src= "https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script>"https://code.angularjs.org/1.3.10/angular-animate.js"</script>
+
+     <!--CALLING LIBRARY OF THE BOOTSTRAP JS-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!--CALLING FILE JS-->
+    <script src="js/script.js"></script>
+
+	<!--CALLING LIBRARY'S OF THE JQUERY-->
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    <!--FILE OF THE JQUERY FOR CARROUSEL-->
+	<script src="js/carrousel/jquery.slides.js"></script>
+
+	<!--CALLING FILE CARROUSEL-->
+	<script src="js/carrousel/script2.js"></script>
+<!-- ******************************************************************************************************************
+***********************************************************************************************************************
+***********************************************************************************************************************-->
 </body>
 </html>
