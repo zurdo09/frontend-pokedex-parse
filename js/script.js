@@ -11,7 +11,7 @@
 
     /*for para llamar todos los links de cada pokemon*/
 /**************************************************************/
-    for(x=1;x<=20;x++)
+    for(x=1;x<=719;x++)
         {
         /*llamar link que retorna json de pokemon*/
     
@@ -48,7 +48,12 @@ app.filter("soloUrl",function(){
 
 /******************************asincronio sincronio************/
 /**************************************************************/
-document.getElementById('poison').style.background='purple';
+   /*$scope.ordenarPor = function(orden) {
+      $scope.ordenSeleccionado = orden;
+      if (pokemonlist.types == posion) {};
+    };
 
-document.getElementById('grass').style.background='green';
+document.getElementsByClassName('poison').style.background='blue';
+
+document.getElementsByClassName('grass').style.background='green';*/
 })();
