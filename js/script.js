@@ -1,18 +1,17 @@
 (function(){
+
     var app=angular.module("pokedex",[]);
 /***************************************************************/
 /******************LLAMADO DE APPI POKEAPI******************/
     app.controller("pokeDex",function($scope,$http)
     {
     /*lista vacia para almacenar todos los json de los pokemon*/
+    
     $scope.listapokemon=[];
-    
-    
-    
-    
+
     /*for para llamar todos los links de cada pokemon*/
 /**************************************************************/
-    for(x=1;x<=50;x++)
+    for(x=1;x<=719;x++)
         {
         /*llamar link que retorna json de pokemon*/
     
@@ -20,6 +19,7 @@
             {
             $scope.pokeInfo=data;
             $scope.listapokemon.push($scope.pokeInfo);
+
             });
         };
 /**************************************************************/
@@ -48,4 +48,12 @@ app.filter("soloUrl",function(){
 
 /******************************asincronio sincronio************/
 /**************************************************************/
+   /*$scope.ordenarPor = function(orden) {
+      $scope.ordenSeleccionado = orden;
+      if (pokemonlist.types == posion) {};
+    };
+
+document.getElementsByClassName('poison').style.background='blue';
+
+document.getElementsByClassName('grass').style.background='green';*/
 })();
